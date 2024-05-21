@@ -1,0 +1,412 @@
+Assignment 
+### Q1. React: Class 2 - MCQ 1
+
+**Question:**
+What will be the function of the below code?
+
+```jsx
+const MyComponent = () => {
+    const [count, setCount] = useState(0);
+
+    const incrementCount = () => {
+      setCount(count + 1);
+    };
+
+    return (
+      <div>
+        <p>Count: {count}</p>
+        <button onClick={incrementCount}>Increment</button>
+      </div>
+    );
+};
+```
+
+**Correct Answer:**
+The component renders a paragraph displaying the current count value and a button that increments the count when clicked.
+
+**Explanation:**
+The code defines a React functional component named `MyComponent` which uses the `useState` hook to manage the state variable `count`, initialized to 0. The `incrementCount` function increments `count` by 1 whenever it is called. The component renders a `<p>` element to display the count and a `<button>` element to call `incrementCount` on click, causing the component to re-render with the updated count.
+
+---
+
+### Q2. React: Class 2 - MCQ 2
+
+**Question:**
+What will be the function of the below code?
+
+```jsx
+const MyComponent = () => {
+    const [name, setName] = useState('');
+
+    const handleInputChange = (e) => {
+      setName(e.target.value);
+    };
+
+    return (
+      <div>
+        <input type="text" value={name} onChange={handleInputChange} />
+        <p>Hello, {name}!</p>
+      </div>
+    );
+};
+```
+
+**Correct Answer:**
+The component renders a text input field and a paragraph that displays a greeting with the entered name.
+
+**Explanation:**
+The code defines a React functional component named `MyComponent` which uses the `useState` hook to manage the state variable `name`, initialized to an empty string. The `handleInputChange` function updates `name` with the current value of the input field. The component renders an `<input>` element to capture user input and a `<p>` element to display a greeting message using the current value of `name`. When the input value changes, the `handleInputChange` function updates the state, causing the component to re-render with the new name.
+
+---
+
+### Q3. React: Class 2 - MCQ 3
+
+**Question:**
+What will be the function of the below code?
+
+```jsx
+const MyComponent = () => {
+    const [isVisible, setIsVisible] = useState(true);
+
+    const toggleVisibility = () => {
+      setIsVisible(!isVisible);
+    };
+
+    return (
+      <div>
+        {isVisible && <p>This paragraph is visible.</p>}
+        <button onClick={toggleVisibility}>Toggle Visibility</button>
+      </div>
+    );
+};
+```
+
+**Correct Answer:**
+The component renders a paragraph that is initially visible, and a button that toggles its visibility.
+
+**Explanation:**
+The code defines a React functional component named `MyComponent` which uses the `useState` hook to manage the state variable `isVisible`, initialized to `true`. The `toggleVisibility` function toggles `isVisible` between `true` and `false`. The component conditionally renders a `<p>` element based on the value of `isVisible` and a `<button>` element to call `toggleVisibility` on click. When the button is clicked, `isVisible` toggles, causing the component to re-render and either show or hide the paragraph.
+
+---
+
+### Q4. React: Class 2 - MCQ 4
+
+**Question:**
+What will be the function of the below code?
+
+```jsx
+const MyComponent = () => {
+    const [items, setItems] = useState([]);
+
+    const addItem = () => {
+      setItems([...items, 'New Item']);
+    };
+
+    return (
+      <div>
+        <ul>
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+        <button onClick={addItem}>Add Item</button>
+      </div>
+    );
+};
+```
+
+**Correct Answer:**
+The component renders an unordered list that displays the items stored in the items state variable, and a button that adds a new item to the list when clicked.
+
+**Explanation:**
+The code defines a React functional component named `MyComponent` which uses the `useState` hook to manage the state variable `items`, initialized to an empty array. The `addItem` function adds a new item 'New Item' to the `items` array using the spread operator. The component renders an unordered list `<ul>` that maps over `items` to create list items `<li>`, and a `<button>` element to call `addItem` on click. When the button is clicked, a new item is added to the list, causing the component to re-render with the updated list.
+
+---
+
+### Q5. React: Class 2 - MCQ 5
+
+**Question:**
+What will be the function of the below code?
+
+```jsx
+import React, { useEffect } from 'react';
+
+const DataFetcher = () => {
+  useEffect(() => {
+    fetch('https://api.example.com/data')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
+
+  return <div>Data Fetcher</div>;
+};
+```
+
+**Correct Answer:**
+The component fetches data from an API and logs it to the console.
+
+**Explanation:**
+The code defines a React functional component named `DataFetcher` which uses the `useEffect` hook to perform a side effect when the component is first rendered. The `useEffect` hook makes a fetch request to the specified API endpoint and logs the fetched data to the console. The empty dependency array `[]` ensures that the effect runs only once, similar to `componentDidMount` in class components. The component renders a simple `<div>` with the text "Data Fetcher".
+
+---
+
+### Q6. React: Class 2 - MCQ 6
+
+**Question:**
+What will be the function of the below code?
+
+```jsx
+import React, { useRef } from 'react';
+
+const Form = () => {
+  const inputRef = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputRef.current.value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" ref={inputRef} />
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+```
+
+**Correct Answer:**
+The component renders a form with an input field and a submit button. When the form is submitted, it logs the entered value to the console.
+
+**Explanation:**
+The code defines a React functional component named `Form` which uses the `useRef` hook to create a reference to the input element. The `handleSubmit` function prevents the default form submission behavior and logs the current value of the input field to the console using the reference. The component renders a form `<form>` with an input field `<input>` and a submit button `<button>`. When the form is submitted, the `handleSubmit` function is called, logging the input value to the console.
+
+---
+
+### Q7. React: Class 2 - MCQ 7
+
+**Question:**
+What will be the function of the below code?
+
+```jsx
+import React, { useState } from 'react';
+
+const MyComponent = () => {
+  const [toggle, setToggle] = useState(false);
+
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
+
+  return (
+    <div>
+      <button onClick={handleToggle}>Toggle</button>
+      {toggle && <p>The toggle is ON</p>}
+      {!toggle && <p>The toggle is OFF</p>}
+    </div>
+  );
+};
+```
+
+**Correct Answer:**
+The component renders a button that toggles the display of different paragraphs based on the toggle state.
+
+**Explanation:**
+The code defines a React functional component named `MyComponent` which uses the `useState` hook to manage the state variable `toggle`, initialized to `false`. The `handleToggle` function toggles the `toggle` state between `true` and `false`. The component conditionally renders different paragraphs based on the value of `toggle` and a `<button>` element to call `handleToggle` on click. When the button is clicked, `toggle` switches between `true` and `false`, causing the component to re-render and display the appropriate paragraph.
+
+---
+### Assignment Notes: React Class 2 MCQs
+
+#### Q3. React: Class 2 - MCQ 8
+
+**Question:**
+What will be the function of the below code?
+
+```jsx
+import React, { useState, useCallback } from 'react';
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const increment = useCallback(() => {
+    setCount((prevCount) => prevCount + 1);
+  }, []);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+};
+```
+
+**Correct Answer:**
+The component renders a paragraph displaying the current count value and a button that increments the count when clicked.
+
+**Explanation:**
+
+- **Importing Hooks:**
+  - The code imports `useState` and `useCallback` from React to manage state and memoize the increment function.
+
+- **Component Definition:**
+  - `Counter` is a functional component that manages a count state.
+
+- **State Initialization:**
+  - `count` state is initialized using `useState` with an initial value of `0`.
+
+- **Increment Function with `useCallback`:**
+  - `useCallback` is used to memoize the `increment` function, which updates the `count` state by incrementing it when the button is clicked.
+
+- **Rendering:**
+  - The component renders a `<div>` containing:
+    - A `<p>` element displaying the current `count` value.
+    - A `<button>` element that triggers the `increment` function when clicked.
+
+- **Example Flow:**
+  - **Initial Render:**
+    - The component renders with `count` set to `0`.
+  - **Incrementing:**
+    - Clicking the "Increment" button updates the `count` state.
+  - **State Update:**
+    - After updating `count`, the component re-renders with the new `count` value.
+
+- **Summary:**
+  - This component renders a paragraph displaying the current count value and a button that increments the count when clicked.
+  - `useCallback` ensures that the `increment` function is memoized and does not change between re-renders unless its dependencies change.
+
+---
+
+#### Q4. React: Class 2 - MCQ 9
+
+**Question:**
+What will be the function of the below code?
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+const DataFetcher = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('https://api.example.com/data')
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return <div>Data: {data}</div>;
+};
+```
+
+**Correct Answer:**
+The component fetches data from an API and displays it when the data is retrieved.
+
+**Explanation:**
+
+- **Importing Hooks:**
+  - The code imports `useState` and `useEffect` from React to manage state and perform side effects.
+
+- **Component Definition:**
+  - `DataFetcher` is a functional component that fetches data from an API.
+
+- **State Initialization:**
+  - `data` state is initialized using `useState` with an initial value of `null`, which will hold the fetched data.
+  - `loading` state is initialized to `true`, indicating that data is being fetched.
+
+- **Fetching Data with `useEffect`:**
+  - `useEffect` is used to fetch data from `https://api.example.com/data` when the component mounts.
+  - Once the data is fetched, `setData` updates the `data` state, and `setLoading` sets `loading` to `false` to indicate that data fetching is complete.
+  - The empty dependency array `[]` ensures that this effect runs only once after the initial render.
+
+- **Conditional Rendering Based on Loading State:**
+  - If `loading` is `true`, a loading message (`<div>Loading...</div>`) is displayed.
+  - If `loading` is `false`, the fetched `data` is displayed (`<div>Data: {data}</div>`).
+
+- **Summary:**
+  - This component fetches data from an API when it mounts, displays a loading message while the data is being fetched, and then displays the fetched data once it is retrieved.
+
+---
+
+#### Q5. React: Class 2 - MCQ 10
+
+**Question:**
+What will be the function of the below code?
+
+```jsx
+import React, { useState, useMemo } from 'react';
+
+const ExpensiveCalculation = () => {
+  const [count, setCount] = useState(0);
+
+  const result = useMemo(() => {
+    // Perform expensive calculation using count
+    return count * 2;
+  }, [count]);
+
+  const increment = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <p>Result: {result}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+};
+```
+
+**Correct Answer:**
+The component renders a paragraph displaying the current count value, the result of an expensive calculation, and a button that increments the count when clicked.
+
+**Explanation:**
+
+- **Importing Hooks:**
+  - The code imports `useState` and `useMemo` from React to manage state and memoize the result of an expensive calculation.
+
+- **Component Definition:**
+  - `ExpensiveCalculation` is a functional component that calculates a result based on `count`.
+
+- **State Initialization:**
+  - `count` state is initialized using `useState` with an initial value of `0`.
+
+- **Memoizing Expensive Calculation with `useMemo`:**
+  - `useMemo` is used to memoize the `result` of an expensive calculation (`count * 2`).
+  - The `result` is recalculated only when `count` changes (`[count]` dependency array).
+
+- **Increment Function:**
+  - `increment` function updates the `count` state by incrementing it when the button is clicked.
+
+- **Rendering:**
+  - The component renders a `<div>` containing:
+    - A `<p>` element displaying the current `count` value.
+    - A `<p>` element displaying the memoized `result`.
+    - A `<button>` element that triggers the `increment` function when clicked.
+
+- **Example Flow:**
+  - **Initial Render:**
+    - The component renders with `count` set to `0`.
+  - **Incrementing:**
+    - Clicking the "Increment" button updates the `count` state.
+    - `result` is recalculated based on the updated `count`.
+  - **State Update:**
+    - After updating `count`, the component re-renders with the new `count` value and recalculated `result`.
+
+- **Summary:**
+  - This component renders a paragraph displaying the current `count` value, the result of an expensive calculation (`count * 2`), and a button that increments the `count` when clicked.
+  - `useMemo` ensures that the expensive calculation is only performed when necessary (i.e., when `count` changes).
+
+---
+
+These notes provide a detailed breakdown of each question, explaining how the provided code works and why the correct answer is what it is.
