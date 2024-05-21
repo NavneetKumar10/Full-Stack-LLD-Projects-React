@@ -1,0 +1,407 @@
+Sure, let's organize the questions and their explanations in a clear format:
+
+### Q1. React: Class 3 - MCQ 1
+
+**Question:**
+```javascript
+const fetchData = async () => {
+  const response = await fetch('https://api.example.com/data');
+  const data = await response.json();
+  return data;
+}
+
+const result = fetchData();
+console.log(result);
+```
+
+**Options:**
+- The fetched data as an object.
+- The Promise object.
+- An error.
+- Undefined.
+
+**Correct Answer:** The Promise object.
+
+**Explanation:**
+- **Async/Await:** `async` functions always return a promise. `await` pauses the function until the promise is resolved.
+- `fetchData()` is an async function, so it returns a promise immediately when called.
+- `console.log(result)` logs the promise object, not the fetched data.
+- To get the data, handle the promise with `.then()` or `await`.
+
+---
+
+### Q2. React: Class 3 - MCQ 2
+
+**Question:**
+```javascript
+const fetchData = async (page) => {
+  const response = await fetch(`https://api.example.com/data?page=${page}`);
+  const data = await response.json();
+  return data;
+}
+
+const result = fetchData(1);
+```
+
+**Options:**
+- Fetches data from the API's first page.
+- Fetches data from the API's second page.
+- Fetches data from the API based on the given page number.
+- Fetches all the data from the API.
+
+**Correct Answer:** Fetches data from the API's first page.
+
+**Explanation:**
+- `fetchData(1)` fetches data from page 1 of the API.
+- The URL is constructed with the `page` parameter.
+- The correct answer is specific to the provided call (`fetchData(1)`).
+
+---
+
+### Q3. React: Class 3 - MCQ 3
+
+**Question:**
+```javascript
+import React, { useState, useEffect } from 'react';
+
+const MyComponent = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetchData().then((response) => setData(response));
+  }, []);
+
+  const fetchData = async () => {
+    const response = await fetch('https://api.example.com/data');
+    const data = await response.json();
+    return data;
+  };
+
+  return <div>{data ? <p>Data loaded!</p> : <p>Loading...</p>}</div>;
+};
+```
+
+**Options:**
+- Data loaded!
+- Loading...
+- null
+- Undefined
+
+**Correct Answer:** Loading...
+
+**Explanation:**
+- **useState and useEffect:** `useState` initializes `data` as `null`, `useEffect` calls `fetchData` once when the component mounts.
+- **fetchData:** An async function fetching data and updating `data`.
+- **Rendering:** While `data` is `null`, `<p>Loading...</p>` is rendered.
+
+---
+
+### Explanation of the Return Statement
+
+```javascript
+return <div>{data ? <p>Data loaded!</p> : <p>Loading...</p>}</div>;
+```
+
+**Explanation:**
+- **JSX and JavaScript Expression:** Curly braces `{}` allow embedding JavaScript expressions inside JSX.
+- **Ternary Operator:** `{data ? <p>Data loaded!</p> : <p>Loading...</p>}`
+  - If `data` is truthy (not `null`), it renders `<p>Data loaded!</p>`.
+  - If `data` is falsy (`null` initially), it renders `<p>Loading...</p>`.
+
+- **Component Behavior:**
+  - Initially, `data` is `null`, so `<p>Loading...</p>` is rendered.
+  - Once `fetchData` completes and updates `data`, `<p>Data loaded!</p>` is rendered.
+
+---
+
+This breakdown should provide a clear understanding of each question and its corresponding concept in React. If you have any further questions or need additional clarifications, feel free to ask!
+
+
+Sure, let's go through the questions and provide detailed explanations:
+
+### Q4. React: Class 3 - MCQ 4
+
+**What is the purpose of using useCallback in the increment function?**
+
+- It prevents unnecessary re-rendering of the component.
+- It caches the `increment` function for optimal performance.
+- It ensures that the `increment` function has access to the latest `count` value.
+- None of the above.
+
+**Correct Answer: It caches the `increment` function for optimal performance.**
+
+**Explanation:**
+
+- **useCallback** is used to memoize functions in React, meaning it caches the function instance so that it's not recreated on every render unless its dependencies change.
+- In this example:
+  ```javascript
+  const increment = useCallback(() => {
+    setCount(count + 1);
+  }, [count]);
+  ```
+  - The `increment` function is only recreated if the `count` dependency changes, optimizing performance.
+  - It does not directly prevent re-rendering of the component, nor does it ensure that `increment` has access to the latest `count` value. Its primary purpose is to cache the function reference for performance reasons.
+
+---
+
+### Q5. React: Class 3 - MCQ 5
+
+**What is the purpose of using useMemo in the sum calculation?**
+
+- It prevents unnecessary re-rendering of the component.
+- It caches the `sum` calculation for optimal performance.
+- It ensures that the `sum` calculation is correct.
+- None of the above.
+
+**Correct Answer: It caches the `sum` calculation for optimal performance.**
+
+**Explanation:**
+
+- **useMemo** is used to memoize expensive calculations so that they are only re-computed when their dependencies change.
+- In this example:
+  ```javascript
+  const sum = useMemo(() => {
+    return data.reduce((acc, curr) => acc + curr, 0);
+  }, [data]);
+  ```
+  - The `sum` calculation is cached and only recomputed when the `data` array changes.
+  - This is useful for optimizing performance when the calculation is complex or when `data` is large.
+  - It does not prevent re-rendering of the component directly, nor does it ensure the correctness of the `sum` calculation. Its main purpose is performance optimization.
+
+---
+
+### Q1. React: Class 3 - MCQ 6
+
+**What happens when the MyComponent component is rendered?**
+
+- The input field receives focus automatically.
+- An error occurs because `inputRef` is not assigned correctly.
+- The input field is empty.
+- None of the above.
+
+**Correct Answer: The input field receives focus automatically.**
+
+**Explanation:**
+
+- **useRef** is used to create a reference to a DOM element.
+- **useEffect** is used to perform side effects in function components, such as setting focus to a DOM element.
+- In this example:
+  ```javascript
+  const inputRef = useRef(null);
+  
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+  
+  return <input ref={inputRef} type="text" />;
+  ```
+  - The `useEffect` hook runs after the component mounts (`[]` dependency means it runs once after the initial render).
+  - `inputRef.current.focus()` gives the input field focus, meaning it receives focus automatically when `MyComponent` is rendered.
+  - There's no error because `inputRef` is correctly assigned to the input element using the `ref` attribute.
+
+---
+
+These explanations should help clarify the concepts behind each question. Let me know if you have any more questions!
+
+Sure, here is the complete solution for the next set of React MCQs:
+
+### Q2. React: Class 3 - MCQ 7
+
+```javascript
+import React from 'react';
+
+const MyComponent = ({ name, age }) => {
+  return (
+    <div>
+      <h1>{name}</h1>
+      <p>{age} years old</p>
+    </div>
+  );
+};
+
+const App = () => {
+  const person = { name: 'John', age: 25 };
+  return <MyComponent {...person} />;
+};
+```
+
+**Question: What will be rendered to the screen by the MyComponent component?**
+
+**Answer: John 25 years old**
+
+**Explanation:**
+
+- **MyComponent Definition:** 
+  - `MyComponent` is a functional component that takes `name` and `age` as props.
+  - It renders a `<div>` containing an `<h1>` that displays the `name` and a `<p>` tag that displays the `age` with the text "years old".
+
+- **App Component:**
+  - `App` is another functional component.
+  - It defines a `person` object with `name` set to 'John' and `age` set to 25.
+  - It uses the spread operator `{...person}` to pass the `name` and `age` properties of the `person` object as props to `MyComponent`.
+
+- **What Will Be Rendered?**
+  - When `App` renders, it creates a `person` object with `name` set to 'John' and `age` set to 25.
+  - It passes the properties of `person` as props to `MyComponent` using the spread operator.
+  - `MyComponent` receives `name` and `age` as props with values 'John' and 25, respectively.
+  - The output rendered will be:
+    ```html
+    <div>
+      <h1>John</h1>
+      <p>25 years old</p>
+    </div>
+    ```
+
+- **Conclusion:**
+  - Given the code, the correct answer is **John 25 years old**.
+
+### Q3. React: Class 3 - MCQ 8
+
+```javascript
+import React from 'react';
+
+const MyComponent = ({ items }) => {
+  return (
+    <ul>
+      {items.map((item) => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  );
+};
+
+const App = () => {
+  const products = [
+    { id: 1, name: 'Product A' },
+    { id: 2, name: 'Product B' },
+    { id: 3, name: 'Product C' },
+  ];
+
+  return <MyComponent items={products} />;
+};
+```
+
+**Question: What will be rendered to the screen by the MyComponent component?**
+
+**Answer: Product A, Product B, Product C**
+
+**Explanation:**
+
+- **MyComponent Definition:**
+  - `MyComponent` is a functional component that takes `items` as a prop.
+  - It renders an unordered list `<ul>`.
+  - It maps over the `items` array and for each `item`, it creates a list item `<li>`.
+  - Each list item `<li>` has a unique `key` based on `item.id` and displays `item.name`.
+
+- **App Component:**
+  - `App` is another functional component.
+  - It defines a `products` array with objects containing `id` and `name` properties.
+  - It passes the `products` array to `MyComponent` as the `items` prop.
+
+- **What Will Be Rendered?**
+  - When `App` renders, it creates a `products` array with three objects, each having an `id` and `name`.
+  - It passes the `products` array to `MyComponent` as the `items` prop.
+  - `MyComponent` maps over the `items` array and creates a list item `<li>` for each `product`, displaying its `name`.
+  - The output rendered will be:
+    ```html
+    <ul>
+      <li>Product A</li>
+      <li>Product B</li>
+      <li>Product C</li>
+    </ul>
+    ```
+
+- **Conclusion:**
+  - Given the code, the correct answer is **Product A, Product B, Product C**.
+
+### Q4. React: Class 3 - MCQ 9
+
+```javascript
+import React, { useState, useEffect } from 'react';
+
+const MyComponent = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const response = await fetch('https://api.example.com/data');
+    const result = await response.json();
+    setData(result);
+  };
+
+  return (
+    <ul>
+      {data.map((item) => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  );
+};
+```
+
+**Question: What is rendered by the MyComponent component?**
+
+**Answer: An empty unordered list (`<ul></ul>`).**
+
+**Explanation:**
+
+- **MyComponent Definition:**
+  - `MyComponent` is a functional component that uses `useState` and `useEffect` hooks.
+  - `data` is initialized as an empty array using `useState`.
+  - `useEffect` is used to fetch data from an API (`https://api.example.com/data`) when the component mounts.
+  - `fetchData` is an asynchronous function that fetches data, parses the JSON response, and updates the `data` state with the result.
+
+- **Rendering the Component:**
+  - Initially, `data` is an empty array because the API fetch has not yet completed.
+  - Therefore, `<ul></ul>` is rendered as an empty unordered list.
+
+- **Conclusion:**
+  - Given the code, the correct answer is **An empty unordered list (`<ul></ul>`)**.
+
+### Q5. React: Class 3 - MCQ 10
+
+```javascript
+import React, { useRef } from 'react';
+
+const MyComponent = () => {
+  const inputRef = useRef();
+
+  const handleButtonClick = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" />
+      <button onClick={handleButtonClick}>Focus Input</button>
+    </div>
+  );
+};
+```
+
+**Question: What happens when the "Focus Input" button is clicked?**
+
+**Answer: The input field receives focus.**
+
+**Explanation:**
+
+- **Component Definition:**
+  - `MyComponent` is a functional component that uses the `useRef` hook to create a reference to the `input` element.
+  - `handleButtonClick` is a function that focuses on the input field (`inputRef.current.focus()`) when the button is clicked.
+
+- **Rendering the Component:**
+  - The component renders an `<input>` element with `ref={inputRef}` to attach the `inputRef` to the input element.
+  - It also renders a `<button>` with an `onClick` event handler that calls `handleButtonClick` when clicked.
+
+- **What Happens When the Button is Clicked:**
+  - When the "Focus Input" button is clicked, `handleButtonClick` is executed.
+  - `inputRef.current` is the DOM node of the `<input>` element because of `ref={inputRef}`.
+  - `inputRef.current.focus()` sets focus on the input field, making it the active element on the page.
+
+- **Conclusion:**
+  - Given the code, the correct answer is **The input field receives focus**.
+
+These are the detailed explanations and solutions for the React Class 3 MCQs. If you have any more questions or need further clarification, feel free to ask
