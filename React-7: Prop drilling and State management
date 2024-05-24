@@ -1,0 +1,209 @@
+Let's go through an example of prop drilling.
+
+### Prop Drilling Example
+
+Imagine we have a component structure like this:
+
+```
+App
+ ├── Parent
+      ├── Child
+            ├── Grandchild
+```
+
+We want to pass data from `App` to `Grandchild`.
+
+Here's how prop drilling works:
+
+```jsx
+
+
+// App Component
+import React from 'react';
+import Parent from './Parent';
+
+const App = () => {
+  const message = "Hello from App!";
+  return <Parent message={message} />;
+};
+
+export default App;
+```
+
+```jsx
+
+
+// Parent Component
+import React from 'react';
+import Child from './Child';
+
+const Parent = ({ message }) => {
+  return <Child message={message} />;
+};
+
+export default Parent;
+```
+
+```jsx
+
+
+// Child Component
+import React from 'react';
+import Grandchild from './Grandchild';
+
+const Child = ({ message }) => {
+  return <Grandchild message={message} />;
+};
+
+export default Child;
+```
+
+```jsx
+
+
+// Grandchild Component
+import React from 'react';
+
+const Grandchild = ({ message }) => {
+  return <div>{message}</div>;
+};
+
+export default Grandchild;
+```
+
+### Breaking Down the Steps
+
+1. **App Component:** 
+   - Defines a message.
+   - Passes the message to `Parent`.
+
+2. **Parent Component:**
+   - Receives the message from `App`.
+   - Passes the message to `Child`.
+
+3. **Child Component:**
+   - Receives the message from `Parent`.
+   - Passes the message to `Grandchild`.
+
+4. **Grandchild Component:**
+   - Receives the message from `Child`.
+   - Displays the message.
+
+### Why Prop Drilling Can Be Problematic
+
+As you can see, each intermediate component (`Parent` and `Child`) must pass the prop along, even if they don't use it. In larger applications, this can make the code harder to manage and understand.
+
+### Avoiding Prop Drilling with Context API
+
+Would you like to see how we can avoid prop drilling using the Context API?
+
+
+Sure! Here's the explanation above each part of the code for better understanding:
+
+### Using Context API
+
+With the Context API, we can create a context and provide it at a higher level, then consume it in deeply nested components without passing props through every level.
+
+### Step-by-Step Example
+
+1. **Create Context:**
+   - Create a context to hold the data.
+
+```jsx
+// MessageContext.js
+import React, { createContext } from 'react';
+
+const MessageContext = createContext();
+
+export default MessageContext;
+```
+
+2. **Provide Context:**
+   - Wrap your component tree with a provider that supplies the data.
+
+```jsx
+// App Component
+import React from 'react';
+import Parent from './Parent';
+import MessageContext from './MessageContext';
+
+const App = () => {
+  const message = "Hello from App!";
+  
+  return (
+    <MessageContext.Provider value={message}>
+      <Parent />
+    </MessageContext.Provider>
+  );
+};
+
+export default App;
+```
+
+3. **Intermediate Components:**
+   - No need to pass props through intermediate components.
+
+```jsx
+// Parent Component
+import React from 'react';
+import Child from './Child';
+
+const Parent = () => {
+  return <Child />;
+};
+
+export default Parent;
+```
+
+```jsx
+// Child Component
+import React from 'react';
+import Grandchild from './Grandchild';
+
+const Child = () => {
+  return <Grandchild />;
+};
+
+export default Child;
+```
+
+4. **Consume Context:**
+   - Use the context in any deeply nested component.
+
+```jsx
+// Grandchild Component
+import React, { useContext } from 'react';
+import MessageContext from './MessageContext';
+
+const Grandchild = () => {
+  const message = useContext(MessageContext);
+  return <div>{message}</div>;
+};
+
+export default Grandchild;
+```
+
+### Breaking Down the Steps
+
+1. **MessageContext.js:**
+   - Create a context using `createContext`.
+
+2. **App Component:**
+   - Define the message.
+   - Wrap the `Parent` component with `MessageContext.Provider` and pass the message as the value.
+
+3. **Parent Component:**
+   - No props needed here, just render `Child`.
+
+4. **Child Component:**
+   - No props needed here, just render `Grandchild`.
+
+5. **Grandchild Component:**
+   - Use `useContext` to consume the message from `MessageContext`.
+
+### Benefits
+
+- **No Prop Drilling:** The message is directly available to `Grandchild` without passing through `Parent` and `Child`.
+- **Cleaner Code:** Intermediate components don't need to pass along props they don't use.
+
+Would you like to try this with your own example or have any questions about the Context API?
