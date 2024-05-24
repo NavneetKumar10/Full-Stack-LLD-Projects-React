@@ -1,0 +1,315 @@
+Sure, here are the complete questions, answers, and detailed explanations in Hindi for each MCQ from Class 4:
+
+### Class 4 Assignment Notes
+
+#### Q1. React: Class 4 - MCQ 1
+
+**Question:**
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const App = () => {
+  return <h1>Hello, React!</h1>;
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+**Options:**
+1. Hello, React!
+2. `<h1>Hello, React!</h1>`
+3. #root
+4. Undefined.
+
+**Explanation in Hindi:**
+```javascript
+import React from 'react';
+```
+- **React library ko import kiya jata hai.** Yeh humein React components aur hooks banane ke liye functions provide karta hai.
+
+```javascript
+import ReactDOM from 'react-dom';
+```
+- **ReactDOM library ko import kiya jata hai.** Yeh humein React components ko DOM par render karne ke liye functions provide karta hai.
+
+```javascript
+const App = () => {
+  return <h1>Hello, React!</h1>;
+};
+```
+- **`App` naam ka ek functional component banaya gaya hai.**
+- **Yeh `<h1>Hello, React!</h1>` JSX return karta hai, jo DOM par render hoga.**
+
+```javascript
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+- **`ReactDOM.render` function ko use karke `App` component ko DOM par render kiya jata hai.**
+- **Isme `App` component ko `#root` element ke andar render kiya jata hai.**
+
+**Answer Explanation:**
+- Yeh code "Hello, React!" ko DOM par render karega.
+- Correct Answer: Hello, React!
+
+---
+
+#### Q2. React: Class 4 - MCQ 2
+
+**Question:**
+```javascript
+import React from 'react';
+
+const App = () => {
+  return (
+    <div>
+      <h1>Hello, React!</h1>
+      <p>Welcome to the world of React.</p>
+    </div>
+  );
+};
+```
+**Options:**
+1. An unordered list with doubled numbers: 2, 4, 6, 8, 10
+2. An unordered list with original numbers: 1, 2, 3, 4, 5
+3. JSX tree
+4. Error: Each child in a list should have a unique "key" prop.
+
+**Explanation in Hindi:**
+- **JSX Tree:**
+  - JSX se ek tree-like structure banaya gaya hai.
+  - `<div>` `App` component ka root hai JSX tree mein.
+  - Iske andar ek `<h1>` element hai jisme "Hello, React!" text hai aur ek `<p>` element hai jisme "Welcome to the world of React." text hai.
+
+**Answer Explanation:**
+- `App` component se banaye gaye JSX tree ko describe karne ke liye istemal kiya jata hai.
+- Correct Answer: JSX tree.
+
+---
+
+#### Q3. React: Class 4 - MCQ 3
+
+**Question:**
+```javascript
+import React from 'react';
+
+const App = () => {
+  return (
+    <div>
+      <h1>Hello, React!</h1>
+      <p>Welcome to the world of React.</p>
+    </div>
+  );
+};
+```
+**Options:**
+1. Virtualization
+2. Comparison
+3. Reconciliation
+4. Diffing
+
+**Explanation in Hindi:**
+- **Reconciliation:**
+  - Reconciliation process hai jisme React Virtual DOM ko actual DOM ke saath compare karta hai aur sirf zaruri changes ko update karta hai.
+
+**Answer Explanation:**
+- Process jisme React Virtual DOM ko actual DOM ke saath compare kiya jata hai aur sirf zaruri parts ko update kiya jata hai, use reconciliation kehte hain.
+- Correct Answer: Reconciliation.
+
+---
+
+#### Q4. React: Class 4 - MCQ 4
+
+**Question:**
+```javascript
+import React, { useState } from 'react';
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(prevCount => prevCount + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+};
+```
+**Options:**
+1. 0
+2. 1
+3. The number of times the button was clicked
+4. Undefined
+
+**Explanation in Hindi:**
+- **useState:**
+  - `useState` hook hai jo functional components mein state variables add karne ke liye istemal hota hai.
+  - `count` ek state variable hai jo `useState` se initialize kiya gaya hai `0` se.
+  - `setCount` ek function hai jo `useState` se provide hota hai, jo `count` state ko update karne ke liye istemal hota hai.
+
+- **Event Handling:**
+  - Jab "Increment" button par click hota hai, tab `handleClick` function chalata hai jo `count` state ko ek increment kar deta hai.
+
+**Answer Explanation:**
+- Jab "Increment" button par click hota hai, tab displayed count button ke clicks se increase hota hai.
+- Correct Answer: The number of times the button was clicked.
+
+---
+
+#### Q5. React: Class 4 - MCQ 5
+
+**Question:**
+```javascript
+import React from 'react';
+
+const App = () => {
+  const name = 'John Doe';
+  const age = 30;
+
+  return (
+    <div>
+      <h1>{name}</h1>
+      <p>{age} years old</p>
+    </div>
+  );
+};
+```
+**Options:**
+1. John Doe 30 years old
+2. `<h1>John Doe</h1> <p>30 years old</p>`
+3. Undefined
+4. Error: 'name' and 'age' props are missing.
+
+**Explanation in Hindi:**
+- **JSX Expression:**
+  - `{name}` aur `{age}` JSX expressions hain jo `name` aur `age` variables ke values ko JSX structure mein interpolate karte hain.
+
+**Answer Explanation:**
+- `App` component "John Doe" ko ek `<h1>` element mein aur "30 years old" ko ek `<p>` element mein render karega.
+- Correct Answer: John Doe 30 years old.
+
+---
+
+#### Q6. React: Class 4 - MCQ 6
+
+**Question:**
+```javascript
+import React from 'react';
+
+const App = () => {
+  const items = [1, 2, 3, 4, 5];
+  const doubledItems = items.map(item => item * 2);
+
+  return <ul>{doubledItems.map(item => <li key={item}>{item}</li>)}</ul>;
+};
+```
+**Options:**
+1. An unordered list with doubled numbers: 2, 4, 6, 8, 10
+2. An unordered list with original numbers: 1, 2, 3, 4, 5
+3. Undefined
+4. Error: Each child in a list should have a unique "key" prop.
+
+**Explanation in Hindi:**
+- **Array Mapping:**
+  - `items` ek array hai `[1, 2, 3, 4, 5]`.
+  - `doubledItems` ek naya array hai jo har `items` ke item ko `item * 2` se map karta hai.
+  - `<ul>` element `doubledItems` ke har item ko ek `<li>` element ke andar render karta hai jisme har `<li>` element ke liye ek unique `key` prop hota hai.
+
+- **Key Prop:**
+  - Har list ke child element ko ek unique `key` prop dena chahiye taaki React ko pata chale ke kaun se items change hue, add hue ya remove hue hain.
+
+**Answer Explanation:**
+- `App` component ek unordered list (`<ul>`) ko render karega jisme doubled numbers honge: 2, 4, 6, 8, 10.
+- Correct Answer: An unordered list with doubled numbers: 2, 4, 6, 8, 10.
+
+---
+
+#### Q7. React: Class 4 - MCQ 7
+
+**Question:**
+```javascript
+import React, { useEffect } from 'react';
+
+const App = () => {
+  useEffect(() => {
+    console.log('Component mounted');
+  }, []);
+
+  return <h1>Hello, React!</h1>;
+};
+```
+**Options:**
+1. 'Component mounted'
+2. 'Hello, React!'
+3. Undefined
+4. Nothing will be logged.
+
+**Explanation in Hindi:**
+- **useEffect:**
+  - `useEffect` functional components mein side effects perform karne ke liye istemal hota hai.
+  - `useEffect` ke andar callback function (`console.log('Component mounted')`) tab chalta hai jab component mount hota hai (`[]` dependency array ke saath).
+
+**Answer Explanation:**
+- Jab `App` component mount hota hai, tab console mein 'Component mounted' log hoga.
+- Correct Answer: 'Component mounted'
+
+---
+
+Certainly! Here are the detailed explanations for MCQ 8, MCQ 9, and MCQ 10:
+
+### Q8. React: Class 4 - MCQ 8
+
+**Question:**
+```javascript
+import React, { useCallback } from 'react';
+
+const App = () => {
+  const handleClick = useCallback(() => {
+    console.log('Button clicked');
+  }, []);
+
+  return <button onClick={handleClick}>Click me</button>;
+};
+```
+**Options:**
+1. 'Button clicked'
+2. 'Click me'
+3. Undefined
+4. Nothing will be logged.
+
+**Explanation in Hindi:**
+- **useCallback Hook:**
+  - `useCallback` hook ek function ko store karne ke liye istemal hota hai, jo tab change nahi hota jab component re-render hota hai.
+  - Yaha `handleClick` ek callback function hai jo button click par 'Button clicked' console mein log karta hai.
+  - `useCallback` ke dependency array (`[]`) empty hai, isliye ye function component mount hone par ek baar hi initialize hoga.
+
+**Answer Explanation:**
+- Jab "Click me" button click hota hai, tab 'Button clicked' console mein log hoga.
+- Correct Answer: 'Button clicked'
+
+---
+
+### Q9. React: Class 4 - MCQ 9
+
+**Question:**
+```javascript
+import React, { useMemo } from 'react';
+
+const App = () => {
+  const largeArray = useMemo(() => Array.from({ length: 1000000 }, (_, index) => index), []);
+
+  return <h1>Array length: {largeArray.length}</h1>;
+};
+```
+**Options:**
+1. Array length: 1000000
+2. Array length: 0
+3. Undefined
+4. Error: Out of memory.
+
+**Explanation in Hindi:**
+- **useMemo Hook:**
+  - `useMemo` hook ek value ko store karne ke liye istemal hota hai jo re-compute hone se bachata hai.
+  - Yaha `largeArray` ek array hai jisme 1000000 items hain, jo ek baar initialize hota hai aur re-render hone par wapas
