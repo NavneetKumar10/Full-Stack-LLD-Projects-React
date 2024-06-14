@@ -95,7 +95,7 @@ const Counter = () => {
 };
 ```
 
-In this example:
+In this example      :
 - `useState(0)` initializes the state variable `count` with an initial value of `0`.
 - `setCount` is a function that updates the value of `count`.
 
